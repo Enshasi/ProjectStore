@@ -21,6 +21,7 @@
 
 <body>
 
+
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
@@ -287,7 +288,14 @@
     <!-- Start Breadcrumbs -->
         {{$breadcrumbs ?? ''}}
         <!-- End Breadcrumbs -->
+        @if ($errors->any())
+        <ul class="bg-danger">
 
+            @foreach ($errors->all() as $error )
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    @endif
     <!-- Start Account Login Area -->
         {{ $slot }}
     <!-- End Account Login Area -->

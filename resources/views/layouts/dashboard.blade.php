@@ -119,32 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
       </li>
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
+     <x-dashboard.notification-mnue count="7" />
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -256,6 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="float-right d-none d-sm-inline">
       Anything you want
     </div>
+
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
@@ -270,8 +246,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+    const userId = "{{Auth::id()}}";
+
+</script>
+
+{{-- @vite('build/assets/js/app-3756346b.js') --}}
+{{-- <script src="@vite('resources')"></script> --}}
 @stack('scripts')
+@vite('resources/js/app.js')
 
 </body>
 </html>

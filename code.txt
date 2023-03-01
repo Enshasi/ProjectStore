@@ -1,0 +1,14 @@
+channels database
+
+1-php artisan notification:table
+2-php artisan migrate
+
+
+
+broadcast
+1-composer require pusher/pusher-php-server
+2-npm install --save laravel-echo pusher-js
+3-code notification in Folder Notification
+4- comment broadcast in Folder App
+5- connect .env
+6-file Bootstrap

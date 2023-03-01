@@ -5,13 +5,14 @@ namespace App\Notifications;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class OrderCreatedNotification extends Notification
 {
     use Queueable; //Queueable => لما يكون عندي عدد المتسخدمين كثار بعمل ترتيب لعرض الأشعارات
-    protected $order ;
+    public $order ;
     /**
      * Create a new notification instance.
      *
@@ -30,9 +31,9 @@ class OrderCreatedNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database' ,  'broadcast' ];
         // $notifiable === model user
-        $channels = ['database'];
+        $channels = [ 'database'];
         if($notifiable->notification_preference['order_created']['sms'] ?? false) {
             $channels[] = 'vonage';
         }
@@ -54,15 +55,35 @@ class OrderCreatedNotification extends Notification
     public function toMail($notifiable)
     {
         $add = $this->order->billingAddress;
+
         return (new MailMessage)
                     ->subject('New Order #'. $this->order->number)
+                    ->from('Notification@AbdEnhsais.ps' , 'Ajyal-Store')
                     ->greeting("Welcome {$notifiable->name}")
                     ->line("A New Order {$this->order->number} Created By {$add->name} from {$add->country}" )
                     ->action('Notification Action', url('/dashboard'))
                     ->line('Thank you for using our application!');
                     // ->view(''); // Templete Message
     }
+    public function toDatabase($notifiable){
+        $add = $this->order->billingAddress;
 
+        return [
+            'body' => "A New Order:{$add->name} ",
+            'icon' => 'fas fa-envelope',
+            'url' =>url('/dashboard')
+        ];
+    }
+
+    public function toBroadcast($notifiable){
+        $add = $this->order->billingAddress;
+
+        return new BroadcastMessage([
+            'body' => "A New Order:{$add->name} ",
+            'icon' => 'fas fa-envelope',
+            'url' =>url('/dashboard')
+        ]);
+    }
     /**
      * Get the array representation of the notification.
      *

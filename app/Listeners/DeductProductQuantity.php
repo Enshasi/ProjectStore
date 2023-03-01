@@ -30,10 +30,15 @@ class DeductProductQuantity
     public function handle()
     {
         //update products set quantity = 'quantity - 1'
-        foreach (Cart::get() as $item){
+        try{
+            foreach (Cart::get() as $item){
                 product::where('id' , '=' , $item->product_id)->update([
                     'quantity' => DB::raw("quantity - {$item->quantity}") ,
                 ]);
+        }
+        }catch(\Exception $e){
+
+
         }
     }
 }

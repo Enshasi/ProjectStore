@@ -26,6 +26,6 @@ class EmptyCart
      */
     public function handle()
     {
-        Cart::empty(); //cart Interface
+        //Cart::empty(); //cart Interface
     }
 }

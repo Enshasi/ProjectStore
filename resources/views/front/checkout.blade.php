@@ -343,5 +343,6 @@
             </div>
         </div>
     </section>
+
     <!--====== Checkout Form Steps Part Ends ======-->
 </x-front-layout >
