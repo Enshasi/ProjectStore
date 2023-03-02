@@ -28,5 +28,5 @@ Route::resource('carts', CartController::class);
 //checkouts
 Route::get('checkout',[CheckoutController::class , 'create'])->name('checkout.create');
 Route::post('checkout',[CheckoutController::class , 'store'])->name('checkout.store');
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';

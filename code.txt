@@ -12,3 +12,10 @@ broadcast
 4- comment broadcast in Folder App
 5- connect .env
 6-file Bootstrap
+
+//
+1 -  composer require laravel/fortify
+2 - php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+3 - php artisan migrate
+4 - config/app ,    App\Providers\FortifyServiceProvider::class ,
+5 - comment Auth breeze in File Web //require __DIR__.'/auth.php';
