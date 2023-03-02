@@ -6,6 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Actions\\Fortify\\CreateNewUser' => $baseDir . '/app/Actions/Fortify/CreateNewUser.php',
+    'App\\Actions\\Fortify\\PasswordValidationRules' => $baseDir . '/app/Actions/Fortify/PasswordValidationRules.php',
+    'App\\Actions\\Fortify\\ResetUserPassword' => $baseDir . '/app/Actions/Fortify/ResetUserPassword.php',
+    'App\\Actions\\Fortify\\UpdateUserPassword' => $baseDir . '/app/Actions/Fortify/UpdateUserPassword.php',
+    'App\\Actions\\Fortify\\UpdateUserProfileInformation' => $baseDir . '/app/Actions/Fortify/UpdateUserProfileInformation.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Events\\OrderCreate' => $baseDir . '/app/Events/OrderCreate.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -48,6 +53,7 @@ return array(
     'App\\Listeners\\DeductProductQuantity' => $baseDir . '/app/Listeners/DeductProductQuantity.php',
     'App\\Listeners\\EmptyCart' => $baseDir . '/app/Listeners/EmptyCart.php',
     'App\\Listeners\\SenderOrderCreatedNotification' => $baseDir . '/app/Listeners/SenderOrderCreatedNotification.php',
+    'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\Cart' => $baseDir . '/app/Models/Cart.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
@@ -66,6 +72,7 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\CartServiceProvider' => $baseDir . '/app/Providers/CartServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
+    'App\\Providers\\FortifyServiceProvider' => $baseDir . '/app/Providers/FortifyServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Repositories\\Cart\\CartModelRepository' => $baseDir . '/app/Repositories/Cart/CartModelRepository.php',
     'App\\Repositories\\Cart\\CartRepository' => $baseDir . '/app/Repositories/Cart/CartRepository.php',

@@ -20,10 +20,10 @@ class CheckLastActive
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-        if($user){
+        if($user instanceof User){ // Just Table User
             // dd($user);
             $user->forceFill([
-                'last_active_at' => Carbon::now(),
+                // 'last_active_at' => Carbon::now(),
             ])->save();
         }
         return $next($request);

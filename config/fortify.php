@@ -47,6 +47,7 @@ return [
     */
 
     'username' => 'email',
+    // 'username' => 'phone_number',
 
     'email' => 'email',
 
@@ -102,7 +103,7 @@ return [
     | specify a custom rate limiter to call then you may specify it here.
     |
     */
-
+    //Count Request Feild
     'limiters' => [
         'login' => 'login',
         'two-factor' => 'two-factor',
@@ -135,7 +136,7 @@ return [
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
-        // Features::emailVerification(),
+     Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([

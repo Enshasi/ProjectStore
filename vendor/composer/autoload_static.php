@@ -571,6 +571,11 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
     );
 
     public static $classMap = array (
+        'App\\Actions\\Fortify\\CreateNewUser' => __DIR__ . '/../..' . '/app/Actions/Fortify/CreateNewUser.php',
+        'App\\Actions\\Fortify\\PasswordValidationRules' => __DIR__ . '/../..' . '/app/Actions/Fortify/PasswordValidationRules.php',
+        'App\\Actions\\Fortify\\ResetUserPassword' => __DIR__ . '/../..' . '/app/Actions/Fortify/ResetUserPassword.php',
+        'App\\Actions\\Fortify\\UpdateUserPassword' => __DIR__ . '/../..' . '/app/Actions/Fortify/UpdateUserPassword.php',
+        'App\\Actions\\Fortify\\UpdateUserProfileInformation' => __DIR__ . '/../..' . '/app/Actions/Fortify/UpdateUserProfileInformation.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\OrderCreate' => __DIR__ . '/../..' . '/app/Events/OrderCreate.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -613,6 +618,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'App\\Listeners\\DeductProductQuantity' => __DIR__ . '/../..' . '/app/Listeners/DeductProductQuantity.php',
         'App\\Listeners\\EmptyCart' => __DIR__ . '/../..' . '/app/Listeners/EmptyCart.php',
         'App\\Listeners\\SenderOrderCreatedNotification' => __DIR__ . '/../..' . '/app/Listeners/SenderOrderCreatedNotification.php',
+        'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
@@ -631,6 +637,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\CartServiceProvider' => __DIR__ . '/../..' . '/app/Providers/CartServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
+        'App\\Providers\\FortifyServiceProvider' => __DIR__ . '/../..' . '/app/Providers/FortifyServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Repositories\\Cart\\CartModelRepository' => __DIR__ . '/../..' . '/app/Repositories/Cart/CartModelRepository.php',
         'App\\Repositories\\Cart\\CartRepository' => __DIR__ . '/../..' . '/app/Repositories/Cart/CartRepository.php',
