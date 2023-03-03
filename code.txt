@@ -19,3 +19,14 @@ broadcast
 3 - php artisan migrate
 4 - config/app ,    App\Providers\FortifyServiceProvider::class ,
 5 - comment Auth breeze in File Web //require __DIR__.'/auth.php';
+
+
+///
+KYq0zZSpMU-qnsa0IqrYE
+nIVcMG4RzG-8AwNJUkuyX
+1fMc2jHcb3-Enl6wwAIkc
+UdBjRP9xVW-RSerC7LnhJ
+r20kHuad6x-vBUm9JJuy6
+zXiL1qkE5I-A0Nlg5jbtf
+gwKKd8Yqqy-kX55WTYHVX
+AkvrGPCIKh-AQxnrFTBDN

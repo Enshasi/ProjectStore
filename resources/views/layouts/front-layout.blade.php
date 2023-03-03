@@ -80,6 +80,26 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12">
+                        {{-- @auth('web') --}}
+                        {{-- @auth('admin') --}}
+                        @auth
+                        <div class="top-end">
+                            <div class="user">
+                                <i class="lni lni-user"></i>
+                                {{-- {{Auth::guard('admin')->user()->name}} --}}
+                                {{Auth::user()->name}}
+                            </div>
+                            <ul class="user-login">
+                                <li>
+                                    <a href="{{route('logout')}}" onclick="event.preventDefault();document.querySelector('#logouts').submit()">logout</a>
+                                </li>
+                                <form method="post" id="logouts" action="{{route('logout')}}" style="display:none">
+                                    @csrf
+
+                                </form>
+                            </ul>
+                        </div>
+                        @else
                         <div class="top-end">
                             <div class="user">
                                 <i class="lni lni-user"></i>
@@ -87,13 +107,14 @@
                             </div>
                             <ul class="user-login">
                                 <li>
-                                    <a href="login.html">Sign In</a>
+                                    <a href="{{route('login')}}">Sign In</a>
                                 </li>
                                 <li>
-                                    <a href="register.html">Register</a>
+                                    <a href="{{route('register')}}">Register</a>
                                 </li>
                             </ul>
                         </div>
+                        @endauth
                     </div>
                 </div>
             </div>
