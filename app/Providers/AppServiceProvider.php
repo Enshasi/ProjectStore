@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceResponse;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use LDAP\Result;
 use League\CommonMark\Extension\CommonMark\Parser\Block\BlockQuoteStartParser;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // JsonResource::withoutWrapping();
         //Solving Proplemes View
         Paginator::useBootstrapFive();
         Validator::extend('filter' , function($attribute ,$value , $words){

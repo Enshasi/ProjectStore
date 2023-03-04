@@ -30,3 +30,17 @@ r20kHuad6x-vBUm9JJuy6
 zXiL1qkE5I-A0Nlg5jbtf
 gwKKd8Yqqy-kX55WTYHVX
 AkvrGPCIKh-AQxnrFTBDN
+
+
+////
+// Api
+
+php artisan make:controller Api\ProductsController --api
+
+//اعادة تسمية الحقول في api
+//كيف بدي يرجع وايش بدي يرجع
+php artisan make:resource ProductResource
+
+//App service Provider
+//add
+JsonResource::withoutWrapping();   //hidden Data data:{}

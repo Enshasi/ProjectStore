@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Support\Str ;
 class Category extends Model
 {
     use HasFactory , SoftDeletes;
@@ -42,6 +42,11 @@ class Category extends Model
         });
 
 
+    }
+    public static function booted(){
+        static::creating(function(Category $category){
+            $category->slug = Str::slug($category->name);
+        });
     }
     public static function rolues($id = 0 ){
         return [
