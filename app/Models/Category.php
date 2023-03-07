@@ -20,6 +20,10 @@ class Category extends Model
         'slug',
         'status',
     ];
+    protected $hidden  = [
+        'created_at','updated_at' ,'delete_at','image'
+    ];
+    protected $appends = ['image_url'];
     public function product(){
         return $this->hasMany(product::class , 'category_id'   , 'id');
     }
@@ -43,7 +47,21 @@ class Category extends Model
 
 
     }
+    public function scopeActive(Builder $builder){
+        $builder->where('status', 'active');
+    }
+    public function getImageUrlAttribute(){
+        if(!$this->image){
+            return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW3lHsd5UxRkPizImJu-ObyALM_aUCOfKq1PaEDj4UYkwE9VZCzvzYK3DP3G0O42QR_po&usqp=CAU";
+
+        }
+        if(Str::startsWith($this->image , ['https://' , 'https://'])){
+            return $this->image ;
+        }
+        return  asset('uploads/categories/'.$this->image);
+    }
     public static function booted(){
+
         static::creating(function(Category $category){
             $category->slug = Str::slug($category->name);
         });

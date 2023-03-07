@@ -3,6 +3,7 @@
 namespace App\Http;
 
 
+use App\Http\Middleware\CheckApiToken;
 use App\Http\Middleware\CheckUserType;
 use App\Http\Middleware\MarkNotificationAsRead;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -47,6 +48,7 @@ class Kernel extends HttpKernel
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            CheckApiToken::class ,
         ],
     ];
 
@@ -70,5 +72,12 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkUser' => CheckUserType::class,
+      /**** OTHER MIDDLEWARE ****/
+      'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+      'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+      'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+      'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+      'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+
     ];
 }

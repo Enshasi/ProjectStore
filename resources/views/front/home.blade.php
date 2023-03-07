@@ -93,108 +93,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Start Single Category -->
-                <div class="single-category">
-                    <h3 class="heading">TV & Audios</h3>
-                    <ul>
-                        <li><a href="product-grids.html">Smart Television</a></li>
-                        <li><a href="product-grids.html">QLED TV</a></li>
-                        <li><a href="product-grids.html">Audios</a></li>
-                        <li><a href="product-grids.html">Headphones</a></li>
-                        <li><a href="product-grids.html">View All</a></li>
-                    </ul>
-                    <div class="images">
-                        <img src="https://via.placeholder.com/180x180" alt="#">
-                    </div>
-                </div>
-                <!-- End Single Category -->
+
+            @foreach ($categories as $category)
+
+            <div class="col-lg-3 col-md-6 col-12">
+                <x-front.category-card :category="$category"/>
             </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Start Single Category -->
-                <div class="single-category">
-                    <h3 class="heading">Desktop & Laptop</h3>
-                    <ul>
-                        <li><a href="product-grids.html">Smart Television</a></li>
-                        <li><a href="product-grids.html">QLED TV</a></li>
-                        <li><a href="product-grids.html">Audios</a></li>
-                        <li><a href="product-grids.html">Headphones</a></li>
-                        <li><a href="product-grids.html">View All</a></li>
-                    </ul>
-                    <div class="images">
-                        <img src="https://via.placeholder.com/180x180" alt="#">
-                    </div>
-                </div>
-                <!-- End Single Category -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Start Single Category -->
-                <div class="single-category">
-                    <h3 class="heading">Cctv Camera</h3>
-                    <ul>
-                        <li><a href="product-grids.html">Smart Television</a></li>
-                        <li><a href="product-grids.html">QLED TV</a></li>
-                        <li><a href="product-grids.html">Audios</a></li>
-                        <li><a href="product-grids.html">Headphones</a></li>
-                        <li><a href="product-grids.html">View All</a></li>
-                    </ul>
-                    <div class="images">
-                        <img src="https://via.placeholder.com/180x180" alt="#">
-                    </div>
-                </div>
-                <!-- End Single Category -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Start Single Category -->
-                <div class="single-category">
-                    <h3 class="heading">Dslr Camera</h3>
-                    <ul>
-                        <li><a href="product-grids.html">Smart Television</a></li>
-                        <li><a href="product-grids.html">QLED TV</a></li>
-                        <li><a href="product-grids.html">Audios</a></li>
-                        <li><a href="product-grids.html">Headphones</a></li>
-                        <li><a href="product-grids.html">View All</a></li>
-                    </ul>
-                    <div class="images">
-                        <img src="https://via.placeholder.com/180x180" alt="#">
-                    </div>
-                </div>
-                <!-- End Single Category -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Start Single Category -->
-                <div class="single-category">
-                    <h3 class="heading">Smart Phones</h3>
-                    <ul>
-                        <li><a href="product-grids.html">Smart Television</a></li>
-                        <li><a href="product-grids.html">QLED TV</a></li>
-                        <li><a href="product-grids.html">Audios</a></li>
-                        <li><a href="product-grids.html">Headphones</a></li>
-                        <li><a href="product-grids.html">View All</a></li>
-                    </ul>
-                    <div class="images">
-                        <img src="https://via.placeholder.com/180x180" alt="#">
-                    </div>
-                </div>
-                <!-- End Single Category -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Start Single Category -->
-                <div class="single-category">
-                    <h3 class="heading">Game Console</h3>
-                    <ul>
-                        <li><a href="product-grids.html">Smart Television</a></li>
-                        <li><a href="product-grids.html">QLED TV</a></li>
-                        <li><a href="product-grids.html">Audios</a></li>
-                        <li><a href="product-grids.html">Headphones</a></li>
-                        <li><a href="product-grids.html">View All</a></li>
-                    </ul>
-                    <div class="images">
-                        <img src="https://via.placeholder.com/180x180" alt="#">
-                    </div>
-                </div>
-                <!-- End Single Category -->
-            </div>
+            @endforeach
+
+
+
         </div>
     </div>
 </section>
@@ -215,7 +123,7 @@
         <div class="row">
             @foreach ($products as $product)
 
-            <div class="col-lg-3 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <x-front.products-card :product="$product"/>
             </div>
             @endforeach

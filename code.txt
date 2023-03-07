@@ -44,3 +44,16 @@ php artisan make:resource ProductResource
 //App service Provider
 //add
 JsonResource::withoutWrapping();   //hidden Data data:{}
+
+
+
+
+//auth api
+password or sanctum
+1-Api Login (create controller accessTokenController)
+2-Model User (hasApiToken)
+
+//Currancy
+
+cURL => protocol (native)
+HTTPGuzzle => library from cURL => laravel work(HTTPClient);

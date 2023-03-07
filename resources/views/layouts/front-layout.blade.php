@@ -44,26 +44,28 @@
                             <ul class="menu-top-link">
                                 <li>
                                     <div class="select-position">
-                                        <select id="select4">
-                                            <option value="0" selected>$ USD</option>
-                                            <option value="1">€ EURO</option>
-                                            <option value="2">$ CAD</option>
-                                            <option value="3">₹ INR</option>
-                                            <option value="4">¥ CNY</option>
-                                            <option value="5">৳ BDT</option>
+                                        <form action="{{route('currency.store')}}" method="post" >
+                                            @csrf
+                                        <select id="select4" name="currency_code" onchange="this.form.submit()">
+                                            <option value="USD" @selected('USD' == session('currancy_code'))>$ USD</option>
+                                            <option value="EUR"  @selected('EUR' == session('currancy_code'))>€ EURO</option>
+                                            <option value="ILS" @selected('ILS' == session('currancy_code'))>$ ILS</option>
+                                            <option value="JOD" @selected('JOD' == session('currancy_code'))>₹ JOD</option>
+                                            <option value="SAR" @selected('SAR' == session('currancy_code'))>¥ SAR</option>
+                                            <option value="QAR" @selected('QAR' == session('currancy_code'))>৳ QAR</option>
                                         </select>
+                                    </form>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="select-position">
-                                        <select id="select5">
-                                            <option value="0" selected>English</option>
-                                            <option value="1">Español</option>
-                                            <option value="2">Filipino</option>
-                                            <option value="3">Français</option>
-                                            <option value="4">العربية</option>
-                                            <option value="5">हिन्दी</option>
-                                            <option value="6">বাংলা</option>
+
+                                        <select class="form-control" onchange="window.location.href= this.value">
+                                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                <option @selected(app()->currentLocale() == $localeCode)  value="{{
+                                                 LaravelLocalization::getLocalizedURL($localeCode, null, [], true)
+                                                }}">{{ $properties['native'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </li>
@@ -73,9 +75,9 @@
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-middle">
                             <ul class="useful-links">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="index.html">{{__('app.home')}}</a></li>
+                                <li><a href="about-us.html">{{__('app.about')}}</a></li>
+                                <li><a href="contact.html">{{__('app.contact')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -91,7 +93,7 @@
                             </div>
                             <ul class="user-login">
                                 <li>
-                                    <a href="{{route('logout')}}" onclick="event.preventDefault();document.querySelector('#logouts').submit()">logout</a>
+                                    <a href="{{route('logout')}}" onclick="event.preventDefault();document.querySelector('#logouts').submit()">{{__('app.logout')}}</a>
                                 </li>
                                 <form method="post" id="logouts" action="{{route('logout')}}" style="display:none">
                                     @csrf
@@ -107,7 +109,7 @@
                             </div>
                             <ul class="user-login">
                                 <li>
-                                    <a href="{{route('login')}}">Sign In</a>
+                                    <a href="{{route('login')}}">{{__('app.signIn')}}</a>
                                 </li>
                                 <li>
                                     <a href="{{route('register')}}">Register</a>
@@ -191,31 +193,9 @@
                         <div class="mega-category-menu">
                             <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
                             <ul class="sub-category">
-                                <li><a href="product-grids.html">Electronics <i class="lni lni-chevron-right"></i></a>
-                                    <ul class="inner-sub-category">
-                                        <li><a href="product-grids.html">Digital Cameras</a></li>
-                                        <li><a href="product-grids.html">Camcorders</a></li>
-                                        <li><a href="product-grids.html">Camera Drones</a></li>
-                                        <li><a href="product-grids.html">Smart Watches</a></li>
-                                        <li><a href="product-grids.html">Headphones</a></li>
-                                        <li><a href="product-grids.html">MP3 Players</a></li>
-                                        <li><a href="product-grids.html">Microphones</a></li>
-                                        <li><a href="product-grids.html">Chargers</a></li>
-                                        <li><a href="product-grids.html">Batteries</a></li>
-                                        <li><a href="product-grids.html">Cables & Adapters</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="product-grids.html">accessories</a></li>
-                                <li><a href="product-grids.html">Televisions</a></li>
-                                <li><a href="product-grids.html">best selling</a></li>
-                                <li><a href="product-grids.html">top 100 offer</a></li>
-                                <li><a href="product-grids.html">sunglass</a></li>
-                                <li><a href="product-grids.html">watch</a></li>
-                                <li><a href="product-grids.html">man’s product</a></li>
-                                <li><a href="product-grids.html">Home Audio & Theater</a></li>
-                                <li><a href="product-grids.html">Computers & Tablets </a></li>
-                                <li><a href="product-grids.html">Video Games </a></li>
-                                <li><a href="product-grids.html">Home Appliances </a></li>
+
+                                <x-front.category-list  />
+
                             </ul>
                         </div>
                         <!-- End Mega Category Menu -->

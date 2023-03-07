@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceResponse;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -30,11 +31,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // echo App::currentLocale();
+
+        // App::setLocale('ar');  //Change Language
         // JsonResource::withoutWrapping();
         //Solving Proplemes View
+
         Paginator::useBootstrapFive();
         Validator::extend('filter' , function($attribute ,$value , $words){
             return !in_array(strtolower($value),$words);
         } , 'This is Not Allowed using filter AppServiceProvider');
     }
+
 }
