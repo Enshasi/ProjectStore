@@ -25,7 +25,7 @@ class FortifyServiceProvider extends ServiceProvider
     {
         $request = request();
 
-        if($request->is('/admin/*')){
+        if($request->is('admin/*')){
             Config::set('fortify.guard' , 'admin');
             Config::set('fortify.prefix' , 'admin');
             Config::set('fortify.passwords' , 'admins');

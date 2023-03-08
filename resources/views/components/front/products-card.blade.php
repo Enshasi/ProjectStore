@@ -15,9 +15,9 @@
          </div>
      </div>
      <div class="product-info">
-         <span class="category">{{ $product->category->name }}</span>
+         <span class="category">{{ $product->category->name ?? null  }}</span>
          <h4 class="title">
-             <a href="{{ route('products.show', $product->slug) }}">{{ $product->name }}</a>
+             <a href="{{ route('products.show', $product->slug) }}">{{ $product->name  }}</a>
          </h4>
          <ul class="review">
              <li><i class="lni lni-star-filled"></i></li>

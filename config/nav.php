@@ -13,6 +13,7 @@ return [
             'route' => 'dashboard.categories.index',
             'title' => 'Categories',
             'active' => 'dashboard.categories.*',
+            'ability' => 'categories.view',
 
         ],
         [
@@ -20,6 +21,7 @@ return [
             'route' => 'dashboard.products.index',
             'title' => 'Products',
             'active' => 'dashboard.products.*',
+            'ability' => 'products.view',
 
         ],
         [
@@ -27,7 +29,22 @@ return [
             'route' => 'dashboard.stores.index',
             'title' => 'Stores',
             'active' => 'dashboard.stores.*',
-
+            'ability' => 'stores.view',
+        ],
+        // [
+        //     'icon' => 'fa-solid fa-list-check ',
+        //     'route' => 'dashboard.stores.index',
+        //     'title' => 'Orders',
+        //     // 'active' => 'dashboard.orders.*',
+        //     'active' => 'dashboard.stores.*',
+        //     'ability' => 'orders.view',
+        // ],
+        [
+            'icon' => 'fa-solid fa-layer-group',
+            'route' => 'dashboard.roles.index',
+            'title' => 'Roles',
+            'active' => 'dashboard.roles.*',
+            'ability' => 'roles.view',
         ],
         [
             'icon' => 'fa-solid fa-user',

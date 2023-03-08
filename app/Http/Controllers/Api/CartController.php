@@ -16,6 +16,7 @@ class CartController extends Controller
         return $cart;
     }
 
+
     public function store(Request $request , Cart $cart)
     {
         $request->validate([
@@ -24,7 +25,7 @@ class CartController extends Controller
         ]);
         $cart->create([
             'quantity' => $request->post('quantity'),
-            'cookie_id' => $request->post('cookie_id' , $request->userAgent()),
+            'cookie_id' =>$request->userAgent(),
             'user_id' => Auth::id(),
             'product_id' => $request->post('product_id'),
             ]

@@ -4,11 +4,12 @@ use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\StoreController;
 use Illuminate\Support\Facades\Route;
 Route::prefix('admin/dashboard')
 // ->middleware(['auth' ,'checkUser:admin,super-admin'])
-->middleware(['auth:admin' ])// any guard ['auth:admin,web' ]
+->middleware(['auth:admin,web' ])// any guard ['auth:admin,web' ]
 ->as('dashboard.')
 ->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -24,5 +25,6 @@ Route::prefix('admin/dashboard')
     Route::resource('/products', ProductController::class);
 
     Route::resource('/stores', StoreController::class);
+    Route::resource('/roles', RolesController::class);
 
 });

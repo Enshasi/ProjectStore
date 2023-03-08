@@ -8,8 +8,13 @@
 @section('content')
 
 <div>
+    @can('categories.create')
     <a href="{{route('dashboard.categories.create')}}" class="btn btn-success mb-2 mr-2">Create</a>
+
+    @endcan
+    @can('categories.update')
     <a href="{{route('dashboard.categories.trash')}}" class="btn btn-info mb-2">Trash</a>
+    @endcan
 </div>
 
 <form action="{{URL::current()}}" method="get" class='d-flex'>
@@ -54,10 +59,15 @@
             <td>{{$category->status}}</td>
             <td>{{$category->product()->count()}}</td>
             <td>{{$category->created_at}}</td>
+
             <td>
+                @can('categories.update')
                 <a class='btn btn-success' href="{{route('dashboard.categories.edit' , $category->id)}}">
                     <i class='fas fa-edit'></i>
                 </a>
+                @endcan
+                @can('categories.delete')
+
                 <form class='d-inline' action="{{route('dashboard.categories.destroy' , $category->id)}}" method="post">
                     @csrf
                     @method('delete')
@@ -67,6 +77,7 @@
 
 
                 </form>
+                @endcan
             </td>
 
         </tr>
