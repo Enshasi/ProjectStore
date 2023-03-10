@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function __construct(){
+        $this->authorizeResource(Admin::class, 'admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +19,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+
         $admins = Admin::paginate();
         return view('dashboard.admins.index', compact('admins'));
     }

@@ -10,7 +10,9 @@
 @section('content')
 
 <div class="mb-5">
+    @can('update' , 'App\Models\Admin')
     <a href="{{ route('dashboard.admins.create') }}" class="btn btn-sm btn-outline-primary mr-2">Create</a>
+    @endcan
 </div>
 
 
@@ -34,10 +36,13 @@
             <td></td>
             <td>{{ $admin->created_at }}</td>
             <td>
+                @can('update' , $admin)
 
                 <a href="{{ route('dashboard.admins.edit', $admin->id) }}" class="btn btn-sm btn-outline-success">Edit</a>
+                @endcan
               <td>
             <td>
+                @can('delete' , $admin)
                 <form action="{{ route('dashboard.admins.destroy', $admin->id) }}" method="post">
                     @csrf
                     <!-- Form Method Spoofing -->
@@ -45,6 +50,7 @@
                     @method('delete')
                     <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                 </form>
+                @endcan
               <td>
         </tr>
         @empty
