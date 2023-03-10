@@ -47,6 +47,13 @@ return [
             'ability' => 'roles.view',
         ],
         [
+            'icon' => 'fa-solid fa-users',
+            'route' => 'dashboard.admins.index',
+            'title' => 'Admins',
+            'active' => 'dashboard.admins.*',
+            'ability' => 'admins.view',
+        ],
+        [
             'icon' => 'fa-solid fa-user',
             'route' => 'dashboard.profile.edit',
             'title' => 'Profile',

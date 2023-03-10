@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Role;
-use App\Models\RoleAbility;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Role::class, 'role');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +16,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate();
-        return view('dashboard.roles.index', compact('roles'));
+        $admins = Admin::paginate();
+        return view('dashboard.admins.index', compact('admins'));
     }
 
     /**
@@ -31,8 +27,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.roles.create'  , [
-            'role' => new Role(),
+        return view('dashboard.admins.create', [
+            'admin' => new Admin(),
+            'roles' => Role::all(),
         ]);
     }
 
@@ -45,13 +42,13 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            // 'abilities' => 'required|array',
-
+            'name' => 'required',
+            'roles' => 'required|array',
         ]);
-        $role = Role::createWithAbility($request);
-        toastr()->success('Role created successfully');
-        return redirect()->route('dashboard.roles.index');
+        $admin = Admin::create($request->all());
+        $admin->roles()->attach($request->roles); //attach add  , sync if not empty array not add
+        toastr()->success('Admin created successfully');
+        return redirect()->route('dashboard.admins.index');
     }
 
     /**
@@ -71,13 +68,14 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Admin $admin  )
     {
-        $role_abilities = $role->abilities->pluck('type', 'ability')->toArray(); //array key and Value (categories.view , 'allow')
 
-        return view('dashboard.roles.edit', compact('role' , 'role_abilities'));
+         $roles = Role::all();
+         $admin_role = $admin->roles->pluck('id')->toArray();
+         return view('dashboard.admins.edit', compact('admin', 'roles', 'admin_role'));
+
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -86,17 +84,16 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Role $role)
+    public function update(Request $request,Admin $admin)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            // 'abilities' => 'required|array',
-
+            'name' => 'required|string',
+            'roles' => 'required|array',
         ]);
-        $role->updateWithAbility($request);
-        toastr()->success('Role updated successfully');
-        return redirect()->route('dashboard.roles.index');
-
+        $admin->update($request->all());
+        $admin->roles()->sync($request->roles);
+        toastr()->success('Admin updated successfully');
+        return redirect()->route('dashboard.admins.index');
     }
 
     /**
@@ -107,10 +104,8 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        $role = Role::findOrFail($id);
-        $role->delete();
-        toastr()->success('Role deleted successfully');
-        return redirect()->route('dashboard.roles.index');
-
+        Admin::destroy($id);
+        toastr()->success('Admin deleted successfully');
+        return redirect()->route('dashboard.admins.index');
     }
 }

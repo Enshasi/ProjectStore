@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::with(['store_id' , 'user_id' ])->paginate();
+        $order = Order::with(['store' , 'user' ])->get();
         return $order ;
     }
 

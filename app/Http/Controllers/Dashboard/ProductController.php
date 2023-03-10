@@ -15,6 +15,8 @@ class ProductController extends Controller
 
     public function index()
     {
+        // $this->authorize('view-any' , product::class); // لو مش ملتزم في التسمية
+        $this->authorize('view'); //policy
         //eger Loading(with)
         $products = Product::with(['category','store'])->paginate();
         return view('dashboard.products.index' , compact('products'));
@@ -27,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create' , product::class);
     }
 
     /**
@@ -38,22 +40,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create' , product::class);
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(product $product)
+
+    public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $this->authorize('view' ,$product);
+        return view('dashboard.products.show' , compact('product'));
     }
 
     public function edit(product $product)
     {
+        $this->authorize('update' ,$product);
         // $tags = tag::all() ;
         $stores = Store::all();
         $categories = Category::all();
@@ -64,6 +66,8 @@ class ProductController extends Controller
 
     public function update(Request $request, product $product)
     {
+        $this->authorize('update' ,$product);
+
         // dd($request->post('tags'));  //string json
         $product->update($request->except('tags'));
         // $tags = explode(',', $request->post('tags'));
@@ -92,8 +96,11 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $this->authorize('delete' ,$product);
+        toastr()->success('Successfully deleted product');
+        return redirect()->route('dashboard.products.index');
     }
 }

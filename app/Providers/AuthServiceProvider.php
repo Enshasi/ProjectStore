@@ -14,6 +14,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
+        // كل مودل شو يلي بقابله
+
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
@@ -31,6 +33,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        //لسوبر أدمن يكون فوق الكل
+        //انو هاذا فوق كل الصلاحيات
+        //بدال ما استخدمها في كل ملف Polici
+        // Gate::before(function ($user, $ability) {
+        //     if ($user->super_admin) { //user Auth => is super admin
+        //         return true; //has all abilities
+        //     }
+        // });
+
+
+
+
         //The Way One
         /*
         Gate::define('categories.index', function ($user) {
@@ -40,10 +54,10 @@ class AuthServiceProvider extends ServiceProvider
             return true;
         });*/
 
-        foreach($this->app->make('abilities') as  $code => $lable){
-            Gate::define($code, function ($user) use ($code)  {
-                return $user->hasAbility($code);
-            });
-        }
+        // foreach($this->app->make('abilities') as  $code => $lable){
+        //     Gate::define($code, function ($user) use ($code)  {
+        //         return $user->hasAbility($code);
+        //     });
+        // }
     }
 }

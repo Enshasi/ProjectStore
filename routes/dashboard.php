@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\ProductController;
@@ -21,7 +22,7 @@ Route::prefix('admin/dashboard')
     Route::put('categories/restore/{category}' , [CategoriesController::class , 'restore'])->name('categories.restore');
     Route::delete('categories/forceDelete/{category}' , [CategoriesController::class , 'forceDelete'])->name('categories.forceDelete');
     Route::resource('/categories', CategoriesController::class);
-
+    Route::resource('/admins' , AdminController::class);
     Route::resource('/products', ProductController::class);
 
     Route::resource('/stores', StoreController::class);

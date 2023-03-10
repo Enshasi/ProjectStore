@@ -57,3 +57,9 @@ password or sanctum
 
 cURL => protocol (native)
 HTTPGuzzle => library from cURL => laravel work(HTTPClient);
+
+//////
+#policies
+
+
+ 1 - php artisan make:policy RolePolicy --model=Role  // Role = Name Model

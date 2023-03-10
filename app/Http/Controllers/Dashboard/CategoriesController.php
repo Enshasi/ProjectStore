@@ -12,10 +12,12 @@ use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
-
+    public function __construct(){
+        $this->authorizeResource(Category::class , 'category');
+    }
     public function index()
     {
-        Gate::authorize('categories.view');
+        // Gate::authorize('categories.view');
         $request  = request();
         $query = Category::with(['parent'])
         // leftJoin('categories as parents' , 'parents.id' , "=" ,'categories.parent_id' )
@@ -34,7 +36,7 @@ class CategoriesController extends Controller
 
     public function create()
     {
-        Gate::authorize('categories.create');
+        // Gate::authorize('categories.create');
 
         $parents  = Category::all();
         $categories = new Category();
@@ -49,7 +51,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        Gate::authorize('categories.create');
+        // Gate::authorize('categories.create');
         $request->validate(Category::rolues());
         $request->merge([
             'slug' => Str::slug($request->name),
@@ -66,13 +68,13 @@ class CategoriesController extends Controller
 
     public function show(Category $category)
     {
-        Gate::authorize('categories.view');
+        // Gate::authorize('categories.view');
         return view('dashboard.categories.show' , compact('category'));
     }
 
     public function edit($id)
     {
-        Gate::authorize('categories.update');
+        // Gate::authorize('categories.update');
 
         try{
             $categories = Category::findOrFail($id);
@@ -96,7 +98,7 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Gate::authorize('categories.update');
+        // Gate::authorize('categories.update');
         $request->validate(Category::rolues($id));
         $categories = Category::findOrFail($id);
         $data = $request->except('image');
@@ -121,7 +123,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Gate::authorize('categories.delete');
+        // Gate::authorize('categories.delete');
         $categories = Category::findOrFail($id);
         $categories->delete();
         toastr()->error('Successfully deleted Category');
