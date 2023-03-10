@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Events\OrderCreate;
+use App\Exceptions\InvalidException;
 use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
@@ -21,6 +22,7 @@ class CheckoutController extends Controller
 {
     public function create(CartRepository  $cart){
         if($cart->get()->count() == 0){
+            // throw new InvalidException('Cart is Empty');
             return redirect()->route('home');
         }
         return view('front.checkout' ,[
@@ -38,7 +40,7 @@ class CheckoutController extends Controller
                 'addr.billing.country' => ['required' , 'string' , 'max:255'],
 
         ],);
-        // dd($request->all());
+
         // $items = $cart->get();//Collection
 
         $items = $cart->get()->groupBy('product.store_id')->all(); //return array //key => store_id //product => nameRelated
@@ -93,6 +95,7 @@ class CheckoutController extends Controller
         return redirect()->back();
     }catch(Throwable $e){
         DB::rollBack();
+
     }
 
     }

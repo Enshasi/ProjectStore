@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -30,10 +31,11 @@ class Handler extends ExceptionHandler
      *
      * @var array<int, string>
      */
-    protected $dontFlash = [
+    protected $dontFlash = [   //Dont Save in Old Request
         'current_password',
         'password',
         'password_confirmation',
+        'credit_card',
     ];
 
     /**
@@ -46,5 +48,19 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+        //Handle Query Exception and Redirect Back with Error Message
+        $this->renderable(function (QueryException $e) {
+
+               // if($e->getCode() == 23000){
+            //     return redirect()->back()->withInput()->withErrors([
+            //         'error' => 'Something went wrong. Please try again later.'
+            //     ]);
+            // }
+
+            // return redirect()->back()->withInput()->withErrors([
+            //     'error' => 'Something went wrong. Please try again later.'
+            // ]);
+        });
+
     }
 }

@@ -63,3 +63,16 @@ HTTPGuzzle => library from cURL => laravel work(HTTPClient);
 
 
  1 - php artisan make:policy RolePolicy --model=Role  // Role = Name Model
+////
+jop
+1 - php artisan make:job DeleteExpiredOrders
+2 - http/console/kernl  => Register File DeleteExpiredOrders (ومعرفة وقت ينفذها )
+3 - php artisan schedule:run (just one run)
+Or
+4 - php artisan schedule:work (run every 1 min)
+
+//Import jop
+1 - FILEsystem_disk = database
+2 - create table jop (php artisan queue:table)
+3- php artisan migrate
+4- php artisan queue:listen --queue=import ,(Or) php artisan queue:work --queue=import

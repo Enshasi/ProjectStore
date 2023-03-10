@@ -17,6 +17,9 @@ class Order extends Model
         'status',
         'payment_status',
     ];
+    protected $hidden = [
+        'created_at' , 'updated_at'
+    ];
 
     public function store(){
         return $this->belongsTo(Store::class);

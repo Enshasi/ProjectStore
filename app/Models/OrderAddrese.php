@@ -16,10 +16,15 @@ class OrderAddrese extends Model
         'order_id', 'type', 'first_name', 'last_name', 'email', 'phone_number',
         'street_address', 'city', 'postal_code', 'state', 'country',
     ];
-    public function getNameAttribute(){
-            return $this->first_name . ' ' . $this->last_name ;
+
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
-    public function getCountryAttribute(){
-            return Countries::getName($this->name) ;
-    }
+
+    // public function getNameAttribute(){
+    //         return $this->first_name . ' ' . $this->last_name ;
+    // }
+    // public function getCountryAttribute(){
+    //         return Countries::getName($this->name) ;
+    // }
 }

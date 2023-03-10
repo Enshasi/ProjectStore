@@ -3,10 +3,12 @@
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\ImportProductsController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\StoreController;
+use App\Jobs\ImportProducts;
 use Illuminate\Support\Facades\Route;
 Route::prefix('admin/dashboard')
 // ->middleware(['auth' ,'checkUser:admin,super-admin'])
@@ -14,6 +16,10 @@ Route::prefix('admin/dashboard')
 ->as('dashboard.')
 ->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+     //Products jop
+     Route::get('products/import' , [ImportProductsController::class , 'create'])->name('products.import');
+     Route::post('products/import' , [ImportProductsController::class , 'store'])->name('products.import');
 
     Route::get('profile' , [ProfileController::class , 'edit'])->name('profile.edit');
     Route::patch('profile' , [ProfileController::class , 'update'])->name('profile.update');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ImportProducts;
 use App\Models\Category;
 use App\Models\product;
 use App\Models\Store;
@@ -103,4 +104,5 @@ class ProductController extends Controller
         toastr()->success('Successfully deleted product');
         return redirect()->route('dashboard.products.index');
     }
+
 }
