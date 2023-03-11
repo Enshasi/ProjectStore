@@ -76,3 +76,12 @@ Or
 2 - create table jop (php artisan queue:table)
 3- php artisan migrate
 4- php artisan queue:listen --queue=import ,(Or) php artisan queue:work --queue=import
+
+
+
+///
+Auth Google and Facebook
+1-composer require laravel/socialite
+2-create controller (write Code)
+3-route (web)
+4-php artisan make:migration Add_social_provider_columns_to_users_table

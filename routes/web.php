@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialController;
+use App\Http\Controllers\Auth\SocialGetUserInfoController;
+use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\CurrencyConverterController;
@@ -39,6 +42,14 @@ Route::post('checkout',[CheckoutController::class , 'store'])->name('checkout.st
 Route::post('currency',[CurrencyConverterController::class , 'store'])->name('currency.store');
 
 Route::view('auth/2fa' , 'front/auth.tow-factor-auth');
+
+
 });
+//google auth
+Route::get('auth/{provider}/redirect'  , [SocialLoginController::class ,'redirect' ])->name('auth.socialite.redirect');
+Route::get('auth/{provider}/callback'  , [SocialLoginController::class , 'callback' ])->name('auth.socialite.callback');
+Route::get('auth/{provider}/user'  , [SocialGetUserInfoController::class , 'index' ])->name('auth.socialite.index');
+
+
 //require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
