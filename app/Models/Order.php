@@ -24,6 +24,9 @@ class Order extends Model
     public function store(){
         return $this->belongsTo(Store::class);
     }
+    public function items(){
+        return $this->hasMany(Order_item::class , 'order_id' , 'id');
+    }
     public function user(){
         return $this->belongsTo(User::class)->withDefault([
             'name' => 'Guest Customer'

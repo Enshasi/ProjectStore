@@ -92,7 +92,7 @@ class CheckoutController extends Controller
         //Event Listener
         // event('order.create'); //Or
 
-        return redirect()->back();
+        return redirect()->route('orders.payments.create' , $order->id);
     }catch(Throwable $e){
         DB::rollBack();
 
