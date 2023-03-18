@@ -13,6 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //name Route
-        '/home/index'
+        '/paypal/webhook',
+        //Webhooks
+        'stripe/webhook',
     ];
 }

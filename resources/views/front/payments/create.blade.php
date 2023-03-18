@@ -5,11 +5,11 @@
                 <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
                     <div id="payment-message" style="display: none;" class="alert alert-info"></div>
 
-                    <form action="" method="post" id="payment-form">
+                    <form id="payment-form" method="POST" action="">
                         <div id="payment-element"></div>
                         <button type="submit" id="submit" class="btn">
-                            <span id="button-text">Pay now</span>
-                            <span id="spinner" style="display: none;">Processing...</span>
+                            <span id="button-text" class=" btn btn-success ">Pay now</span>
+                            <span id="spinner"  style="display: none;">Processing...</span>
                         </button>
                     </form>
                 </div>
@@ -22,6 +22,7 @@
         // This is your test publishable API key.
         const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
         let elements;
+        // console.log("{{$order->id}}");
         initialize();
         document
             .querySelector("#payment-form")
@@ -30,7 +31,7 @@
         async function initialize() {
             const {
                 clientSecret
-            } = await fetch("{{ route('stripe.paymentIntent.create', $order->id) }}", {
+            } = await fetch("{{ route('stripe.paymentIntent.create',$order->id) }}", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -54,7 +55,7 @@
                 elements,
                 confirmParams: {
                     // Make sure to change this to your payment completion page
-                    return_url: "{{ route('stripe.return', $order->id) }}",
+                    return_url: "{{ route('stripe.return',$order->id) }}",
                 },
             });
             // This point will only be reached if there is an immediate error when
@@ -94,4 +95,5 @@
             }
         }
     </script>
+
 </x-front-layout>

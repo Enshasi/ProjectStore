@@ -49,10 +49,12 @@ return [
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
         'redirect' => env('APP_URL').'/auth/twitter/callback'
       ],
-      'stripe' =>[
+       'stripe' =>[
         'publishable_key' => env('STRIPE_PUBLISHABLE_KEY'),
         'secret_key' => env('STRIPE_SECRET_KEY'),
     ],
+
+
 
 ];
 

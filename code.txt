@@ -85,3 +85,12 @@ Auth Google and Facebook
 2-create controller (write Code)
 3-route (web)
 4-php artisan make:migration Add_social_provider_columns_to_users_table
+//
+using Webhook
+
+1- create controller (write Code)
+2 - route (web)
+3 - Using tow command Line
+4- install File zip strip
+4 - 1 command -  a- stripe login -b- stripe listen --forward-to http://localhost:8000/stripe/webhook
+5 - 2 command a- stripe triger payment_intent.canceled

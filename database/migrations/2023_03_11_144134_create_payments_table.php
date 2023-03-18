@@ -20,9 +20,9 @@ return new class extends Migration
             $table->float('amount');
             $table->char('currency' , 3)->default('USD');
             $table->string('method');
-            $table->enum('status', ['pending', 'paid', 'failed' , 'canceled'])->default('pending');
+            $table->enum('status', ['completed','pending', 'paid', 'failed' , 'canceled'])->default('pending');
             $table->string('transaction_id')->nullable();
-            $table->string('transaction_data')->nullable();
+            $table->text('transaction_data')->nullable();
             $table->timestamps();
         });
     }
