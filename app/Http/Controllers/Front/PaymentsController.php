@@ -24,8 +24,9 @@ class PaymentsController extends Controller
         $amount  = $order->items->sum(function ($item){
             return $item->price * $item->quantity;
         });
+
         $paymentIntents = $stripe->paymentIntents->create(
-          ['amount' => $amount,
+          ['amount' => 1000,
           'currency' => 'usd',
           'payment_method_types' => ['card']
           ]
@@ -51,7 +52,6 @@ class PaymentsController extends Controller
     }
     //call back from stripe
     public function confirm(Request $request , Order $order ){
-        // dd($request->all());
         $stripe = new \Stripe\StripeClient(config('services.stripe.secret_key'));
           $paymentIntent = $stripe->paymentIntents->retrieve(
                 $request->payment_intent ,

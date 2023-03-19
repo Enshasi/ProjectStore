@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\CurrencyConverterController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PaymentsController;
 use App\Http\Controllers\Front\ProductsController;
+use App\Http\Controllers\Genral\OrdersController;
 use App\Http\Controllers\Genral\StripWebhooksController;
 use App\Services\CurrencyConverter;
 use Illuminate\Support\Facades\Route;
@@ -53,17 +54,21 @@ Route::get('auth/{provider}/callback'  , [SocialLoginController::class , 'callba
 Route::get('auth/{provider}/user'  , [SocialGetUserInfoController::class , 'index' ])->name('auth.socialite.index');
 
 
+
+Route::post('orders/stripe/{order}/payment_intent', [PaymentsController::class, 'createStripePaymentIntent'])
+    ->name('stripe.paymentIntent.create');
 Route::get('orders/{order}/payment' , [PaymentsController::class , 'create'] )->name('orders.payments.create');
 
 
-Route::post('orders/stripe/{order}/payment-intent', [PaymentsController::class, 'createStripePaymentIntent'])
-    ->name('stripe.paymentIntent.create');
 
 Route::get('orders/pay/{order}/stripe/callback' , [PaymentsController::class , 'confirm'] )
     ->name('stripe.return');
 
 //strip webhooks(Live Notifications)
 Route::any('stripe/webhook',[StripWebhooksController::class , 'handle']);
+
+//Maping
+Route::get('order/{order}' , [OrdersController::class , 'show'])->name('orders.show');
 
 //require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';

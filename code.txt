@@ -1,3 +1,6 @@
+//Editing File migrate
+php artisan make:migration add_pending_status_to_nameTable_table
+
 channels database
 
 1-php artisan notification:table

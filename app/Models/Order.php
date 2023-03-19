@@ -69,4 +69,8 @@ class Order extends Model
         }
         return $year.'0001' ;
     }
+    //delivery
+    public function delivery(){
+        return $this->hasOne(Delivery::class , 'order_id' , 'id');
+    }
 }

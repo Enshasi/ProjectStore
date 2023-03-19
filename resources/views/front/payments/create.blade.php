@@ -22,16 +22,17 @@
         // This is your test publishable API key.
         const stripe = Stripe("{{ config('services.stripe.publishable_key') }}");
         let elements;
-        // console.log("{{$order->id}}");
+        console.log("{{$order->id}}");
         initialize();
         document
             .querySelector("#payment-form")
             .addEventListener("submit", handleSubmit);
+
         // Fetches a payment intent and captures the client secret
         async function initialize() {
             const {
                 clientSecret
-            } = await fetch("{{ route('stripe.paymentIntent.create',$order->id) }}", {
+            } = await fetch("{{ route('stripe.paymentIntent.create' , $order->id) }}", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -55,7 +56,7 @@
                 elements,
                 confirmParams: {
                     // Make sure to change this to your payment completion page
-                    return_url: "{{ route('stripe.return',$order->id) }}",
+                    return_url: "{{ route('stripe.return' , $order->id) }}",
                 },
             });
             // This point will only be reached if there is an immediate error when

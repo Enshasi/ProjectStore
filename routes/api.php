@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\CheckoutController;
+use App\Http\Controllers\Api\DeliveriesController;
 use App\Http\Controllers\Api\OrderAddressController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\OrderItemController;
@@ -42,7 +43,13 @@ Route::ApiResource('/orderAddress', OrderAddressController::class)->middleware('
 Route::ApiResource('/users', UsersController::class)->middleware('auth:sanctum');
 Route::ApiResource('/admins', AdminsController::class)->middleware('auth:sanctum');
 
+
+//create token
 Route::post('auth/access-tokens' , [AccessTokensController::class , 'store'])
 ->middleware('guest:sanctum');
-
+//delete token
 Route::delete('auth/access-tokens/{token?}' , [AccessTokensController::class , 'destroy'])->middleware('auth:sanctum');
+
+//Map
+Route::get('deliveries/{delivery}' , [DeliveriesController::class , 'show']);
+Route::put('deliveries/{delivery}' , [DeliveriesController::class , 'update']);
