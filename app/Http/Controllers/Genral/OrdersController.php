@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Genral;
 
+use App\Events\DeliveryLocationUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -14,9 +15,11 @@ class OrdersController extends Controller
             'id',
             'order_id',
             'status',
-            DB::raw('ST_X(current_location) AS lng'),
-            DB::raw('ST_Y(current_location) AS lat')
+            DB::raw('ST_Y(current_location) AS lng'),
+            DB::raw('ST_X(current_location) AS lat')
         ])->first();
+
+
 
         return view('front.orders.show' , [
             'order' => $order,
