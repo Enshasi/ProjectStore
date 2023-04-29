@@ -12,9 +12,9 @@ use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
-    public function __construct(){
-        $this->authorizeResource(Category::class , 'category');
-    }
+    // public function __construct(){
+    //     $this->authorizeResource(Category::class , 'category');
+    // }
     public function index()
     {
         // Gate::authorize('categories.view');

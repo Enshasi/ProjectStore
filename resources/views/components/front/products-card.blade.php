@@ -1,5 +1,9 @@
  <!-- Start Single Product -->
  <div class="single-product">
+    <form method="post" action="{{route('carts.store')}}">
+        @csrf
+        <input type="hidden" name="product_id" value="{{$product->id}}">
+        <input type="hidden" name="quantity" value="1">
      <div class="product-image">
          {{-- <img src="{{asset('uploads/products/'.$product->image)}}" alt="#"> --}}
          <img src="{{ $product->image_url }}" alt="#">
@@ -10,8 +14,8 @@
              <span class="new-tag">new</span>
          @endif
          <div class="button">
-             <a href="#" class="btn"><i class="lni lni-cart"></i> Add to
-                 Cart</a>
+             <button href="" type="submit" class="btn"> Add to
+                 Cart</button>
          </div>
      </div>
      <div class="product-info">
@@ -34,5 +38,6 @@
              @endif
          </div>
      </div>
+    </form>
  </div>
  <!-- End Single Product -->

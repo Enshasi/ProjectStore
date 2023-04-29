@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Auth\SocialGetUserInfoController;
 use App\Http\Controllers\Auth\SocialLoginController;
+use App\Http\Controllers\Dashboard\WishlistController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\CurrencyConverterController;
@@ -37,6 +38,9 @@ Route::get('products',[ ProductsController::class , 'index'])->name('products.in
 Route::get('products/{product:slug}', [ProductsController::class  , 'show'])->name('products.show');
 Route::resource('carts', CartController::class);
 
+Route::post('wishlist', [WishlistController::class , 'store'])->name('wishlist.store');
+
+Route::post('wishlist/{id}', [WishlistController::class , 'destroy'])->name('wishlist.destroy');
 //checkouts
 Route::get('checkout',[CheckoutController::class , 'create'])->name('checkout.create');
 Route::post('checkout',[CheckoutController::class , 'store'])->name('checkout.store');

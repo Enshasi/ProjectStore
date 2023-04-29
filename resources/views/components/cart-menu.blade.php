@@ -6,7 +6,7 @@
     <!-- Shopping Item -->
     <div class="shopping-item">
         <div class="dropdown-cart-header">
-            <span>2 Items</span>
+            <span>{{$items->count()}} Items</span>
             <a href="{{route('carts.index')}}">View Cart</a>
         </div>
         <ul class="shopping-list">

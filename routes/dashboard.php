@@ -26,6 +26,8 @@ Route::prefix('admin/dashboard')
 
     Route::get('categories/trash' , [CategoriesController::class , 'trash'])->name('categories.trash');
     Route::put('categories/restore/{category}' , [CategoriesController::class , 'restore'])->name('categories.restore');
+    Route::resource('products' , ProductController::class);
+
     Route::delete('categories/forceDelete/{category}' , [CategoriesController::class , 'forceDelete'])->name('categories.forceDelete');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/admins' , AdminController::class);

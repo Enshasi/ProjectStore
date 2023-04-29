@@ -28,7 +28,7 @@ class AdminPolicy
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view( $user, Admin $admin)
+    public function view( $user)
     {
         return $user->hasAbility('admins.view');
     }

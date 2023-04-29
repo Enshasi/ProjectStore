@@ -6,74 +6,73 @@
 <li class="breadcrumb-item active">products</li>
 @endsection
 @section('content')
+<div class="row ">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="col-xl-6">
+                    <a class="btn ripple btn-primary mt-3 tx-13 mr-3 mb-0"   href="{{route('dashboard.products.create')}}">Add Product</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table text-md-nowrap" id="example1" data-page-length='50'>
+                        <thead>
+                        <tr>
+                            <th class="border-bottom-0">#</th>
+                            <th class="border-bottom-0"> Name </th>
+                            <th class="border-bottom-0">Store </th>
+                            <th class="border-bottom-0"> Category</th>
+                            <th class="border-bottom-0"> Image</th>
+                            <th class="border-bottom-0"> Price</th>
+                            <th class="border-bottom-0"> Quantity</th>
+                            <th class="border-bottom-0"> Status</th>
+                            <th class="border-bottom-0"> Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($products as $product)
+                            <tr>
+                                <td>{{$loop->index  + 1}}</td>
+                                <td>{{$product->name}} </td>
+                                <td>{{$product->store->name}}</td>
+                                <td>{{$product->category->name}}</td>
+                                <td>
+                                    <img src="{{asset('uploads/products/'.$product->image)}}" width="100px" height="100px" alt="">
+                                </td>
+                                <td>{{$product->price}}</td>
+                                <td>{{$product->quantity}}</td>
+                                <td>{{$product->status}}</td>
+                                <td>
 
-<div>
-    <a href="{{route('dashboard.products.create')}}" class="btn btn-success mb-2 mr-2">Create</a>
-    {{-- <a href="{{route('dashboard.products.trash')}}" class="btn btn-info mb-2">Trash</a> --}}
-</div>
-
-<form action="{{URL::current()}}" method="get" class='d-flex'>
-    <x-form.input name="name" :value="request('name')" />
-
-    <select name="status" class="form-control form-select">
-            <option value="">All</option>
-            <option value="active" @selected(request('status') == 'active')>Active</option>
-            <option value="archived" @selected(request('status') == 'archived')>Archived</option>
-    </select>
-    <button type="submit" class='btn btn-success'>Search</button>
-</form>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Store</th>
-        <th scope="col">Category</th>
-        <th scope="col">Status</th>
-        <th scope="col">price</th>
-        <th scope="col">Actions</th>
-
-      </tr>
-    </thead>
-    <tbody>
-
-        @forelse ($products as $product)
-        <tr>
-            <th scope="row">{{$product->id}}</th>
-            <td>{{$product->name}}</td>
-            <td>{{$product->store->name}}</td>
-            <td>{{$product->category->name}}</td>
-
-            <td>{{$product->status}}</td>
-            <td>{{$product->price}}</td>
-            <td>
-                <a class='btn btn-success' href="{{route('dashboard.products.edit' , $product->id)}}">
-                    <i class='fas fa-edit'></i>
-                </a>
-                <form class='d-inline' action="{{route('dashboard.products.destroy' , $product->id)}}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button class='btn btn-danger'>
-                        <i class='fas fa-trash'></i>
-                    </button>
+                                    <a class="modal-effect btn btn-sm btn-info"
+                                       href="{{route('dashboard.products.edit',$product->id )}}" ><i class="fas fa-edit"></i></a>
 
 
-                </form>
-            </td>
+                                    <form method='post' action="{{route('dashboard.products.destroy',$product->id )}}" style="display: inline-block">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
 
-        </tr>
-        @empty
-             <td>None Data</td>
-        @endforelse
+                            </td>
 
-
-    </tbody>
-</table>
-        <div>
-        {{$products->withQueryString()->links()}}
-
-
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="9" class="text-center">No Data</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                        {{$products->withQueryString()->links()}}
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+    <!--/div-->
 
+
+
+
+</div>
 @endsection
 

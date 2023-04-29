@@ -1,6 +1,6 @@
 
     <!-- Start Single Category -->
-    <div class="single-category">
+    <div class="single-category" style="width: 220px;height:200px" >
         <h3 class="heading">{{$category->name}}</h3>
         <ul>
             @foreach ($category->child()->get() as $child )

@@ -182,6 +182,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         ),
         'F' => 
         array (
+            'Fx3costa\\LaravelChartJs\\' => 24,
             'Fruitcake\\Cors\\' => 15,
             'Flasher\\Prime\\' => 14,
             'Flasher\\Laravel\\' => 16,
@@ -560,6 +561,10 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
         ),
+        'Fx3costa\\LaravelChartJs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src',
+        ),
         'Fruitcake\\Cors\\' => 
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
@@ -668,6 +673,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'App\\Actions\\Fortify\\UpdateUserProfileInformation' => __DIR__ . '/../..' . '/app/Actions/Fortify/UpdateUserProfileInformation.php',
         'App\\Concerns\\HasRoles' => __DIR__ . '/../..' . '/app/Concerns/HasRoles.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Events\\DeliveryLocationUpdated' => __DIR__ . '/../..' . '/app/Events/DeliveryLocationUpdated.php',
         'App\\Events\\OrderCreate' => __DIR__ . '/../..' . '/app/Events/OrderCreate.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exceptions\\InvalidException' => __DIR__ . '/../..' . '/app/Exceptions/InvalidException.php',
@@ -677,6 +683,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'App\\Http\\Controllers\\Api\\AdminsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AdminsController.php',
         'App\\Http\\Controllers\\Api\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CartController.php',
         'App\\Http\\Controllers\\Api\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CategoriesController.php',
+        'App\\Http\\Controllers\\Api\\DeliveriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/DeliveriesController.php',
         'App\\Http\\Controllers\\Api\\OrderAddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/OrderAddressController.php',
         'App\\Http\\Controllers\\Api\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/OrderController.php',
         'App\\Http\\Controllers\\Api\\OrderItemController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/OrderItemController.php',
@@ -698,6 +705,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'App\\Http\\Controllers\\Dashboard\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/AdminController.php',
         'App\\Http\\Controllers\\Dashboard\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/CategoriesController.php',
         'App\\Http\\Controllers\\Dashboard\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/DashboardController.php',
+        'App\\Http\\Controllers\\Dashboard\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/HomeController.php',
         'App\\Http\\Controllers\\Dashboard\\ImportProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ImportProductsController.php',
         'App\\Http\\Controllers\\Dashboard\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProductController.php',
         'App\\Http\\Controllers\\Dashboard\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProfileController.php',
@@ -709,6 +717,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'App\\Http\\Controllers\\Front\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/HomeController.php',
         'App\\Http\\Controllers\\Front\\PaymentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/PaymentsController.php',
         'App\\Http\\Controllers\\Front\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/ProductsController.php',
+        'App\\Http\\Controllers\\Genral\\OrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Genral/OrdersController.php',
         'App\\Http\\Controllers\\Genral\\StripWebhooksController' => __DIR__ . '/../..' . '/app/Http/Controllers/Genral/StripWebhooksController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -748,6 +757,7 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\product' => __DIR__ . '/../..' . '/app/Models/product.php',
         'App\\Models\\tag' => __DIR__ . '/../..' . '/app/Models/tag.php',
+        'App\\Models\\wishlist' => __DIR__ . '/../..' . '/app/Models/wishlist.php',
         'App\\Notifications\\OrderCreatedNotification' => __DIR__ . '/../..' . '/app/Notifications/OrderCreatedNotification.php',
         'App\\Observers\\CartObServer' => __DIR__ . '/../..' . '/app/Observers/CartObServer.php',
         'App\\Policies\\AdminPolicy' => __DIR__ . '/../..' . '/app/Policies/AdminPolicy.php',
@@ -1779,6 +1789,8 @@ class ComposerStaticInit0c2f7a129eef23e0cde7c062f9ac29b3
         'Flasher\\Prime\\Translation\\TranslatorInterface' => __DIR__ . '/..' . '/php-flasher/flasher/Translation/TranslatorInterface.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
+        'Fx3costa\\LaravelChartJs\\Builder' => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src/Builder.php',
+        'Fx3costa\\LaravelChartJs\\Providers\\ChartjsServiceProvider' => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src/Providers/ChartjsServiceProvider.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
         'GrahamCampbell\\ResultType\\Result' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Result.php',
         'GrahamCampbell\\ResultType\\Success' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Success.php',

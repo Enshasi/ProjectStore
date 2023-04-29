@@ -3,13 +3,13 @@
 @section('titlePage' , 'Categories Create')
 @section('breadcrumb')
 @parent
-<li class="breadcrumb-item active">Categories</li>
+<li class="breadcrumb-item active">Products</li>
 @endsection
 @section('content')
 
-<form method="post" action="{{ route('dashboard.categories.store')}}" enctype="multipart/form-data">
+<form method="post" action="{{ route('dashboard.products.store')}}" enctype="multipart/form-data">
     @csrf
-    @include('dashboard.categories.__form')
+    @include('dashboard.products.__form')
 
     <div class="form-group">
         <button type="submit" class='btn btn-success'>Create</button>

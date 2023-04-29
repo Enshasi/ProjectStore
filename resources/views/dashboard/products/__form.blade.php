@@ -56,12 +56,15 @@
         <x-form.input lable="compare price" type="text" name='compare_price'  :value="$product->compare_price"/>
     </div>
     <div class="form-group">
+        <x-form.input lable="Quantity" type="text" name='quantity'  :value="$product->quantity"/>
+    </div>
+    <div class="form-group">
         <x-form.input lable="Tags" type="text" name='tags' :value="$tags" />
     </div>
     <div class="form-group">
         <x-form.radio lable="Active" text="active"  name="status" :value="$product->status" />
         <x-form.radio lable="Archived" text="archived"  name="status" :value="$product->status" />
-        <x-form.radio lable="Archived" text="draft"  name="status" :value="$product->status" />
+        <x-form.radio lable="Draft" text="draft"  name="status" :value="$product->status" />
     </div>
 
 

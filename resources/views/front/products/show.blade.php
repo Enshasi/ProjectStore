@@ -51,7 +51,7 @@
                             {{-- Ailes => namecpace Currency : file App  --}}
                             <h3 class="price">{{Currency::format($product->price )}}<span>@if($product->compare_price)  {{Currency::format($product->compare_price)}} @endif</span></h3>
                             <p class="info-text">{{$product->description}}</p>
-                            <form method="post" action="{{route('carts.store')}}">
+                            <form method="post" action="{{route('carts.store')}}" class='d-inline'>
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
 
@@ -102,26 +102,28 @@
                             </div>
                             <div class="bottom-content">
                                 <div class="row align-items-end">
-                                    <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="col-lg-4 col-md-4 col-4">
                                         <div class="button cart-button">
                                             <button class="btn" type="submit" style="width: 100%;">Add to Cart</button>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
+                                </form>
+
+
+                                    <div class="col-lg-4 col-md-4 col-4">
                                         <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-reload"></i> Compare</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-heart"></i> To Wishlist</button>
+                                            <form method="post" action="{{route('wishlist.store')}}" class='d-inline-block'>
+                                                @csrf
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <button type="submit" class="btn"><i class="lni lni-heart"></i> To Wishlist</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
 
-                        </div>
+                            </div>
+
+
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ class product extends Model
 {
     use HasFactory;
     protected $fillable = ['name',
-    'image' , 'rating' , 'status', 'description','slug' , 'category_id' , 'store_id' , 'price' , 'compare_price'];
+    'image' , 'rating' , 'status', 'description','slug' , 'category_id' , 'store_id' , 'price' ,'quantity' , 'compare_price'];
     //Api Hidden Column in Response Json
     protected $hidden = [
         'created_at'  ,'updated_at','deleted_at' , 'image'
@@ -66,7 +66,7 @@ class product extends Model
             return $this->image ;
        }
 
-       return asset('assets/products/'.$this->image);
+       return asset('uploads/products/'.$this->image);
 
     }
 

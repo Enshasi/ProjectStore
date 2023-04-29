@@ -10,6 +10,7 @@ use App\Models\Store;
 use App\Models\tag;
 use Illuminate\Support\Str ;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -17,20 +18,22 @@ class ProductController extends Controller
     public function index()
     {
         // $this->authorize('view-any' , product::class); // لو مش ملتزم في التسمية
-        $this->authorize('view'); //policy
+        // $this->authorize('view'); //policy
         //eger Loading(with)
         $products = Product::with(['category','store'])->paginate();
         return view('dashboard.products.index' , compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        $this->authorize('create' , product::class);
+        // $this->authorize('create' , product::class);
+        return view('dashboard.products.create' , [
+            'stores' => Store::all(),
+            'categories' => Category::all(),
+            'product' => new Product(),
+            'tags' => new tag()
+        ]);
     }
 
     /**
@@ -41,22 +44,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create' , product::class);
 
+        // $this->authorize('create' , product::class);
+        $request->validate([
 
+        ]);
+        $request->merge([
+            'slug' => Str::slug($request->name),
+        ]);
+        $data = $request->except('image');
+        $image_name = null ;
+        if($request->hasFile('image')){
+            $img = $request->image ;
+            $image_name = rand().time().$img->getClientOriginalName();
+            $img->move(public_path('uploads/products/') , $image_name);
+            $data['image'] = $image_name;
+        }
+        Product::create($data);
+        toastr()->success('Successfully deleted product');
+        return redirect()->route('dashboard.products.index');
     }
 
 
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        $this->authorize('view' ,$product);
+        // $this->authorize('view' ,$product);
         return view('dashboard.products.show' , compact('product'));
     }
 
     public function edit(product $product)
     {
-        $this->authorize('update' ,$product);
+        // $this->authorize('update' ,$product);
         // $tags = tag::all() ;
         $stores = Store::all();
         $categories = Category::all();
@@ -67,7 +86,7 @@ class ProductController extends Controller
 
     public function update(Request $request, product $product)
     {
-        $this->authorize('update' ,$product);
+        // $this->authorize('update' ,$product);
 
         // dd($request->post('tags'));  //string json
         $product->update($request->except('tags'));
@@ -100,8 +119,10 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $this->authorize('delete' ,$product);
-        toastr()->success('Successfully deleted product');
+        File::delete(public_path('uploads/products/'.$product->image));
+        $product->delete();
+        // $this->authorize('delete' ,$product);
+        toastr()->error('Successfully deleted product');
         return redirect()->route('dashboard.products.index');
     }
 
