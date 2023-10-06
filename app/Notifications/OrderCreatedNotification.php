@@ -33,7 +33,7 @@ class OrderCreatedNotification extends Notification
     {
         return ['database' ,  'broadcast' ];
         // $notifiable === model user
-        $channels = [ 'database'];
+        $channels = [ 'database' ];
         if($notifiable->notification_preference['order_created']['sms'] ?? false) {
             $channels[] = 'vonage';
         }

@@ -12,8 +12,13 @@
     @method('patch')
     @include('dashboard.roles.__form')
     <div class="form-group">
-        <button type="submit" class='btn btn-success'>Edit</button>
-    </div>
+
+
+        <div class="card-header text-left bg-transparent">
+            <button type="submit"
+            class="btn btn-primary btn-md m-1"><i class="i-Add-User text-black mr-2"></i>
+            Add role</button>
+        </div>    </div>
 </form>
 
 @endsection

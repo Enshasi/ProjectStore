@@ -7,14 +7,14 @@
     <title>{{$title}}</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/assets/images/favicon.svg')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('front/images/favicon.svg')}}" />
 
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/LineIcons.3.0.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/tiny-slider.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/glightbox.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />
+    <link rel="stylesheet" href="{{asset('front/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('front/css/LineIcons.3.0.css')}}" />
+    <link rel="stylesheet" href="{{asset('front/css/tiny-slider.css')}}" />
+    <link rel="stylesheet" href="{{asset('front/css/glightbox.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('front/css/main.css')}}" />
     @stack('styles')
 
 </head>
@@ -129,7 +129,7 @@
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
                         <a class="navbar-brand" href="index.html">
-                            <img src="{{asset('assets/images/logo/logo.svg')}}" alt="Logo">
+                            <img src="{{asset('front/images/logo/logo.svg')}}" alt="Logo">
                         </a>
                         <!-- End Header Logo -->
                     </div>
@@ -308,7 +308,7 @@
                         <div class="col-lg-3 col-md-4 col-12">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="{{asset('assets/assets/images/logo/white-logo.svg')}}" alt="#">
+                                    <img src="{{asset('front/front/images/logo/white-logo.svg')}}" alt="#">
                                 </a>
                             </div>
                         </div>
@@ -417,7 +417,7 @@
                         <div class="col-lg-4 col-12">
                             <div class="payment-gateway">
                                 <span>We Accept:</span>
-                                <img src="{{asset('assets/assets/images/footer/credit-cards-footer.png')}}" alt="#">
+                                <img src="{{asset('front/front/images/footer/credit-cards-footer.png')}}" alt="#">
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -451,10 +451,10 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/tiny-slider.js')}}"></script>
-    <script src="{{asset('assets/js/glightbox.min.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('front/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('front/js/tiny-slider.js')}}"></script>
+    <script src="{{asset('front/js/glightbox.min.js')}}"></script>
+    <script src="{{asset('front/js/main.js')}}"></script>
     @stack('scripts')
 </body>
 

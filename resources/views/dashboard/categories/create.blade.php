@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+<x-app-layout>
 @section('title' , 'dashboard')
 @section('titlePage' , 'Categories Create')
 @section('breadcrumb')
@@ -17,3 +17,4 @@
 </form>
 
 @endsection
+</x-app-layout>

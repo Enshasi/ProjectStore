@@ -1,5 +1,5 @@
-@extends('layouts.dashboard')
-@section('title' , 'dashboard')
+
+<x-app-layout>
 @section('titlePage' , 'Categories Create')
 @section('breadcrumb')
 @parent
@@ -12,8 +12,9 @@
     @method('patch')
     @include('dashboard.categories.__form')
     <div class="form-group">
-        <button type="submit" class='btn btn-success'>Edit</button>
+        <button type="submit" class='btn btn-primary btn-md m-1'>Edit</button>
     </div>
 </form>
 
 @endsection
+</x-app-layout>

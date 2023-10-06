@@ -8,7 +8,7 @@ Alpine.start();
 
 //Echo.channel => Public channel
 //app.event.my-event //if not .
-var channel = Echo.private(`App.Models.User.${userId}`); //Lisen Private Changel
+var channel = Echo.private(`App.Models.User.${UserID}`); //Lisen Private Changel
 channel.notification( function(data) {  //app.event.my-event
     // console.log(data);
     // alert(data.body)

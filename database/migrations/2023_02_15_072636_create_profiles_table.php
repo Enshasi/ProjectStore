@@ -14,19 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-            // $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('first_name');
-            $table->string('last_name');
+            $table->string('last_name')->nullable();
             $table->date('birthday')->nullable();
             $table->enum('gender' , ['male' , 'female'])->nullable();
             $table->string('street_address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('postal_code')->nullable();
-            $table->char('country' , 2);
-            $table->char('locale' , 2)->default('en');
-            $table->primary('user_id');
+            $table->string('country');
+            $table->string('locale')->default('en');
+
             $table->timestamps();
         });
     }

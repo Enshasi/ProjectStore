@@ -33,7 +33,11 @@
     <div class="form-group">
 
         <x-form.input lable="Image" type="file" name='image' />
-        <img width="100" height="100" src="{{asset('uploads/categories/'.$categories->image)}}" alt="">
+        @if($categories->image)
+
+            <img width="100" height="100" src="{{asset('uploads/categories/'.$categories->image)}}" alt="">
+
+        @endif
     </div>
     <div class="form-group">
         <x-form.radio lable="Active" text="active"  name="status" :value="$categories->status" />

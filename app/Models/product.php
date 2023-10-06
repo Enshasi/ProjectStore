@@ -30,6 +30,9 @@ class product extends Model
         static::creating(function(product $product) {
             $product->slug = Str::slug($product->name);
         });
+        static::updating(function(product $product) {
+            $product->slug = Str::slug($product->name);
+        });
     }
 
     public function category(){
@@ -109,4 +112,30 @@ class product extends Model
         });
 
     }
+
+    //Tags
+    public static function TagsGen($request , $product){
+        if($request->post('tags')){
+
+
+        $tags = json_decode($request->post('tags')); //string json
+        $saved_tags = Tag::all();
+        $tag_id = [];
+        foreach ($tags as $item){ //$item === Obj
+            $slug = str::slug($item->value);
+            $tag = $saved_tags->where('slug', $slug)->first();
+            if(!$tag){
+                $tag = Tag::create([
+                    'name' => $item->value,
+                    'slug' => $slug,
+                ]);
+            }
+            $tag_id[] = $tag->id;
+        }
+        $product->tags()->sync($tag_id);
+      };
+    }
+
+
+
 }

@@ -59,9 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     ];
 
-    public function profile(){
-        return $this->hasOne(Profile::class , 'user_id' , 'id')->withDefault();
-    }
+
     // هان بدها تاجيني قيمة
     public function setProviderTokenAttribute($value)
     {
@@ -73,6 +71,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         //فك تشفير
        return  Crypt::decryptString($value);
+    }
+
+    //store
+    public function store(){
+        return $this->belongsTo(Store::class)->withDefault();
     }
 
 }

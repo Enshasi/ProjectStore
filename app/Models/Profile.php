@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'admin_id';
     protected $fillable = [
-            'user_id',
+            'admin_id',
             'first_name',
             'last_name',
         	'birthday',
@@ -23,6 +23,6 @@ class Profile extends Model
             'locale',
     ];
     public function profile(){
-        return $this->belongsTo(User::class , 'user_id' , 'id')->withDefault();
+        return $this->belongsTo(Admin::class , 'admin_id' , 'id')->withDefault();
     }
 }

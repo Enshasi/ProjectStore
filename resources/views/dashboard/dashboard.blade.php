@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <div class="row">
-    <div class="col-lg-12 d-flex justify-content-between">
+    {{-- <div class="col-lg-12 d-flex justify-content-between">
 
 
       <div class="col-lg-2   card card-primary card-outline">
@@ -51,12 +51,12 @@
         </div>
       </div><!-- /.card -->
 
-    </div>
+    </div> --}}
 
   </div>
   {{-- d-flex justify-content-between align-items-center --}}
   <div class="row">
-    <div class="col-md-6 col-lg-12 col-xl-7 over">
+    {{-- <div class="col-md-6 col-lg-6 col-xl-7 over">
         <div class="card">
             <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                 <div class="d-flex justify-content-between">
@@ -85,7 +85,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     </div>

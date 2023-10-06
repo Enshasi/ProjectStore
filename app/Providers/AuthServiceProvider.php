@@ -36,11 +36,11 @@ class AuthServiceProvider extends ServiceProvider
         //لسوبر أدمن يكون فوق الكل
         //انو هاذا فوق كل الصلاحيات
         //بدال ما استخدمها في كل ملف Polici
-        // Gate::before(function ($user, $ability) {
-        //     if ($user->super_admin) { //user Auth => is super admin
-        //         return true; //has all abilities
-        //     }
-        // });
+        Gate::before(function ($user, $ability) {
+            if ($user->super_admin) { //user Auth => is super admin
+                return true; //has all abilities
+            }
+        });
 
 
 

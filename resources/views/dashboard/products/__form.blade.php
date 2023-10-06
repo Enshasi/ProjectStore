@@ -43,7 +43,9 @@
     <div class="form-group">
 
         <x-form.input lable="Image" type="file" name='image' />
-        <img width="100" height="100" src="{{asset('uploads/products/'.$product->image)}}" alt="">
+        @if($product->image)
+        <img width="50" height="70" src="{{asset('uploads/products/'.$product->image)}}" alt="">
+        @endif
     </div>
 
     <div class="form-group">

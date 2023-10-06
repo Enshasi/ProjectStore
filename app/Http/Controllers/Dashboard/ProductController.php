@@ -49,18 +49,16 @@ class ProductController extends Controller
         $request->validate([
 
         ]);
-        $request->merge([
-            'slug' => Str::slug($request->name),
-        ]);
         $data = $request->except('image');
-        $image_name = null ;
         if($request->hasFile('image')){
-            $img = $request->image ;
-            $image_name = rand().time().$img->getClientOriginalName();
-            $img->move(public_path('uploads/products/') , $image_name);
-            $data['image'] = $image_name;
+            $image = $request->file('image');
+            $path = time().'.'.$image->getClientOriginalExtension();
+            $images = $image->move("uploads/products",$path);
+            $data['image']=$images;
         }
-        Product::create($data);
+        $result = Product::create($data);
+
+        product::TagsGen($request  , $result);
         toastr()->success('Successfully deleted product');
         return redirect()->route('dashboard.products.index');
     }
@@ -86,26 +84,10 @@ class ProductController extends Controller
 
     public function update(Request $request, product $product)
     {
-        // $this->authorize('update' ,$product);
 
-        // dd($request->post('tags'));  //string json
         $product->update($request->except('tags'));
-        // $tags = explode(',', $request->post('tags'));
-        $tags = json_decode($request->post('tags')); //string json
-        $saved_tags = Tag::all();
-        $tag_id = [];
-        foreach ($tags as $item){ //$item === Obj
-            $slug = str::slug($item->value);
-            $tag = $saved_tags->where('slug', $slug)->first();
-            if(!$tag){
-                $tag = Tag::create([
-                    'name' => $item->value,
-                    'slug' => $slug,
-                ]);
-            }
-            $tag_id[] = $tag->id;
-        }
-        $product->tags()->sync($tag_id);
+        product::TagsGen($request  , $product);
+
         toastr()->success('Successfully created product');
         return redirect()->route('dashboard.products.index');
     }

@@ -11,5 +11,7 @@ class Admin extends User
 {
     use HasApiTokens, HasFactory  , Notifiable , HasRoles;
     protected $fillable = ['username' , 'password' , 'name'  , 'phone_number' , 'status' , 'super_admin' ,'email'];
-
+    public function profile(){
+        return $this->hasOne(Profile::class , 'admin_id' , 'id')->withDefault();
+    }
 }

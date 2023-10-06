@@ -87,7 +87,7 @@ class CheckoutController extends Controller
 
         }
         DB::commit();
-        // event(new OrderCreate($order));
+        event(new OrderCreate($order));
         // $cart->empty();
         //Event Listener
         // event('order.create'); //Or

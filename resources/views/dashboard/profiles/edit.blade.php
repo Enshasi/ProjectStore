@@ -1,10 +1,11 @@
-@extends('layouts.dashboard')
+<x-app-layout>
 @section('title' , 'dashboard')
-@section('titlePage' , 'Profiles Create')
+{{-- @section('titlePage' , 'Profiles Create')
 @section('breadcrumb')
+
 @parent
 <li class="breadcrumb-item active">Profiles</li>
-@endsection
+@endsection --}}
 @section('content')
 
 <form method="post" action="{{ route('dashboard.profile.update')}}" enctype="multipart/form-data">
@@ -93,5 +94,5 @@
 
     </div>
 </form>
-
 @endsection
+</x-app-layout>
